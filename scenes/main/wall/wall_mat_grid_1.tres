@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://di6mqa476nblq"]
+
+[ext_resource type="Texture2D" uid="uid://v8nlx14sdfsx" path="res://img/grid_1.png" id="1_74d15"]
+
+[resource]
+diffuse_mode = 3
+albedo_texture = ExtResource("1_74d15")
+uv1_triplanar = true

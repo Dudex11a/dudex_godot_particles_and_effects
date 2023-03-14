@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://dqb60bumximwp"]
+
+[ext_resource type="Script" path="res://scenes/fire_1/fire_1.gd" id="1_2xfi6"]
+[ext_resource type="PlaneMesh" uid="uid://cvflyk2xw3bsd" path="res://scenes/fire_1/fire_1_mesh.tres" id="1_tnjwc"]
+[ext_resource type="Texture2D" uid="uid://cygpdb4pysyy3" path="res://img/small_white_line_1.png" id="2_jlu6n"]
+
+[sub_resource type="Gradient" id="Gradient_d0y75"]
+offsets = PackedFloat32Array(0, 0.113821, 0.861789, 1)
+colors = PackedColorArray(0.980392, 0.843137, 0.0588235, 0, 0.98, 0.84182, 0.0588, 1, 0.847059, 0, 0, 1, 0.847059, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aghd2"]
+gradient = SubResource("Gradient_d0y75")
+
+[sub_resource type="Curve" id="Curve_tmhun"]
+_data = [Vector2(0, 0.763636), 0.0, 1.35333, 0, 0, Vector2(1, 0), -2.8, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mv0s6"]
+curve = SubResource("Curve_tmhun")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l10yp"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.1
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+damping_min = 3.0
+damping_max = 4.0
+angle_max = 360.0
+scale_min = 0.5
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_mv0s6")
+color_ramp = SubResource("GradientTexture1D_aghd2")
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+
+[sub_resource type="Gradient" id="Gradient_6ovoc"]
+offsets = PackedFloat32Array(0, 0.414634, 0.804878, 0.99187)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.580392, 0, 0, 0, 0.941176, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_idtot"]
+gradient = SubResource("Gradient_6ovoc")
+
+[sub_resource type="Curve" id="Curve_qestv"]
+_data = [Vector2(0, 0.190909), 0.0, 0.215385, 0, 0, Vector2(1, 0), -1.18462, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8k6o8"]
+curve = SubResource("Curve_qestv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rfm6o"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.1
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.1
+initial_velocity_max = 1.5
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+damping_min = 4.0
+damping_max = 5.0
+angle_max = 360.0
+scale_min = 0.5
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_8k6o8")
+color_ramp = SubResource("GradientTexture1D_idtot")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfcw8"]
+render_priority = -1
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_jlu6n")
+albedo_texture_force_srgb = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_agvoh"]
+material = SubResource("StandardMaterial3D_dfcw8")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="Fire1" type="Node3D"]
+script = ExtResource("1_2xfi6")
+metadata/_edit_group_ = true
+
+[node name="FireBright" type="GPUParticles3D" parent="."]
+amount = 200
+lifetime = 0.8
+explosiveness = 0.1
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_l10yp")
+draw_pass_1 = ExtResource("1_tnjwc")
+metadata/_edit_lock_ = true
+
+[node name="FireDark" type="GPUParticles3D" parent="."]
+amount = 100
+lifetime = 0.8
+explosiveness = 0.1
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_rfm6o")
+draw_pass_1 = SubResource("PlaneMesh_agvoh")
+metadata/_edit_lock_ = true
