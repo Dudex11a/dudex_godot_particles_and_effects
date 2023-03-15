@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://d07kepqppbfwy"]
+
+[ext_resource type="Shader" path="res://scenes/main/flat_image_sky_a.gdshader" id="1_v4f7i"]
+[ext_resource type="Texture2D" uid="uid://dglebg4dbsuqc" path="res://img/wave_1.png" id="2_o83ib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sdqk"]
+shader = ExtResource("1_v4f7i")
+shader_parameter/background_texture = ExtResource("2_o83ib")
+
+[sub_resource type="Sky" id="Sky_30krv"]
+sky_material = SubResource("ShaderMaterial_7sdqk")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_30krv")
+glow_enabled = true

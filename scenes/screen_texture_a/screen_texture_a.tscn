@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://biqloehbyhdna"]
+
+[ext_resource type="Shader" path="res://scenes/screen_texture_a/screen_texture_a.gdshader" id="1_yhwgw"]
+[ext_resource type="Texture2D" uid="uid://dglebg4dbsuqc" path="res://img/wave_1.png" id="2_i35v8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3q5o"]
+render_priority = 0
+shader = ExtResource("1_yhwgw")
+shader_parameter/TEXTURE = ExtResource("2_i35v8")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b15ro"]
+material = SubResource("ShaderMaterial_v3q5o")
+
+[node name="ScreenTextureA" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_b15ro")
